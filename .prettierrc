@@ -3,7 +3,7 @@
     {
       "files": "*.astro",
       "options": {
-        "parser": "html",
+        "parser": "angular",
         "singleQuote": true
       }
     }
