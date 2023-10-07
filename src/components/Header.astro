@@ -3,21 +3,35 @@ import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 ---
 
-<header class="border-b-4 border-black flex justify-between p-6 items-center">
-	<h1 class="font-bold font sm:text-4xl text-xl">{SITE_TITLE}</h1>
+<header
+	class="border-b-4 border-black flex flex-col md:flex-row justify-between p-6 items-center gap-10"
+>
+	<h1 class="font-bold font sm:text-2xl text-xl">{SITE_TITLE}</h1>
 	<nav>
-		<ul class="flex align-middle">
-			<li>
-				<HeaderLink>Blog</HeaderLink>
+		<ul class="flex align-middle w-96 justify-around md:justify-between">
+			<li class="text-lg">
+				<HeaderLink href={"/"}>Home</HeaderLink>
 			</li>
-			<li>
-				<HeaderLink>Home</HeaderLink>
+			<li class="text-lg">
+				<HeaderLink href={"/blog"}>Blog</HeaderLink>
 			</li>
-			<li>
-				<HeaderLink />
+			<li class="text-lg">
+				<HeaderLink href={"/about"}>About me</HeaderLink>
 			</li>
-			<li>
-				<HeaderLink />
+			<li class="hidden md:block">
+				<HeaderLink>
+					<img class="w-6" src="github-icon.png" alt="Github Icon" />
+				</HeaderLink>
+			</li>
+			<li class="hidden md:block">
+				<HeaderLink>
+					<img class="w-6" src="linkedin-icon.png" alt="linkedin icon" />
+				</HeaderLink>
+			</li>
+			<li class="hidden md:block">
+				<HeaderLink>
+					<img class="w-6" src="twitter-icon.png" alt="twitter icon" />
+				</HeaderLink>
 			</li>
 		</ul>
 	</nav>
