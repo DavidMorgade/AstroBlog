@@ -14,51 +14,27 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog
-				starter template. This template serves as a lightweight,
-				minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add
-				tools like Tailwind, React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>
-					Edit the site header items in <code>src/components/Header.astro</code>
-				</li>
-				<li>
-					Add your name to the footer in
-					<code>src/components/Footer.astro</code>
-				</li>
-				<li>
-					Check out the included blog posts in <code>src/pages/blog/</code>
-				</li>
-				<li>
-					Customize the blog post page layout in
-					<code>src/layouts/BlogPost.astro</code>
-				</li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a> or
-				<a href="https://astro.build/chat">join us on Discord</a> to ask
-				questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a>
-				 by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main
+			class="flex flex-col md:flex-row text-center justify-between m-0 w-full"
+		>
+			<section>
+				<div class="flex flex-col">
+					<h2 class="text-3xl text-center leading-loose">¡Hola! Soy David.</h2>
+					<p class="leading-relaxed">
+						Tu informático de confianza, si, ese que llamas cuando el portatil
+						te va lento, o cuando tu secadora no funciona...
+					</p>
+					<p>
+						Si estás aquí para ver como voy progresando en el mundo del
+						Desarrollo Full Stack, tal vez aprendas algo interesante sobre
+						programación
+					</p>
+					<h3>Ponte cómodo y ¡Disfruta!</h3>
+				</div>
+			</section>
+			<section>
+				<img src="./codingBgGif.webp" alt="codingBgGi" />
+			</section>
 		</main>
 		<Footer />
 
