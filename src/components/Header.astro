@@ -1,38 +1,29 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
+import SocialMediaItems from "./SocialMediaItems.astro";
 ---
 
 <header
-	class="border-b-4 border-black flex flex-col md:flex-row justify-between p-6 items-center gap-10"
+	class="border-b-4 border-black flex flex-col md:flex-row justify-between p-10 items-center gap-10"
 >
 	<h1 class="font-bold font sm:text-2xl text-xl">{SITE_TITLE}</h1>
 	<nav>
-		<ul class="flex align-middle w-96 justify-around md:justify-between">
-			<li class="text-lg">
-				<HeaderLink href={"/"}>Home</HeaderLink>
-			</li>
-			<li class="text-lg">
-				<HeaderLink href={"/blog"}>Blog</HeaderLink>
-			</li>
-			<li class="text-lg">
-				<HeaderLink href={"/about"}>About me</HeaderLink>
-			</li>
-			<li class="hidden md:block">
-				<HeaderLink>
-					<img class="w-6" src="github-icon.png" alt="Github Icon" />
-				</HeaderLink>
-			</li>
-			<li class="hidden md:block">
-				<HeaderLink>
-					<img class="w-6" src="linkedin-icon.png" alt="linkedin icon" />
-				</HeaderLink>
-			</li>
-			<li class="hidden md:block">
-				<HeaderLink>
-					<img class="w-6" src="twitter-icon.png" alt="twitter icon" />
-				</HeaderLink>
-			</li>
+		<ul
+			class="flex flex-col-reverse md:flex-row items-center w-96 justify-center gap-y-5 md:gap-x-5 md:justify-between"
+		>
+			<div class="flex align-middle justify-between w-52 gap-4">
+				<li class="text-lg">
+					<HeaderLink href={"/"}>Home</HeaderLink>
+				</li>
+				<li class="text-lg">
+					<HeaderLink href={"/blog"}>Blog</HeaderLink>
+				</li>
+				<li class="text-lg">
+					<HeaderLink href={"/about"}>About me</HeaderLink>
+				</li>
+			</div>
+			<SocialMediaItems footer="false" />
 		</ul>
 	</nav>
 </header>
