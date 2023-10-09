@@ -76,7 +76,7 @@ import ImageBottomSection from "../components/ImageBottomSection.astro";
 			>
 		</section>
 		<Footer />
-		<script>
+		<script is:inline>
 			if (window.netlifyIdentity) {
 				window.netlifyIdentity.on("init", (user) => {
 					if (!user) {
