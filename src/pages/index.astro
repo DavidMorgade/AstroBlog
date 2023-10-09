@@ -22,7 +22,7 @@ import ImageBottomSection from "../components/ImageBottomSection.astro";
 				<div
 					class="flex flex-col items-center gap-8 xl:items-start xl:gap-y-14"
 				>
-					<h2 class="text-3xl md:text-4xl xl:text-left xl:text-6xl">
+					<h2 class="text-2xl md:text-3xl xl:text-left xl:text-5xl">
 						¡Hola! Soy David.
 					</h2>
 					<p class="text-xl md:text-2xl">
@@ -40,9 +40,13 @@ import ImageBottomSection from "../components/ImageBottomSection.astro";
 						contacto de mi portfolio, también puedes contactarme por correo a
 						davidmorgadegil@gmail.com
 					</p>
-					<h3 class="text-2xl md:text-3xl xl:text-3xl">
-						Ponte cómodo y ¡Disfruta!
-					</h3>
+					<div class="typewriter">
+						<h3
+							id="typewriter-text"
+							class="h-12 text-2xl md:text-3xl xl:text-3xl"
+						>
+						</h3>
+					</div>
 				</div>
 			</section>
 			<section class="absolute bottom-0 top-0 w-full opacity-10">
@@ -82,6 +86,28 @@ import ImageBottomSection from "../components/ImageBottomSection.astro";
 					}
 				});
 			}
+			document.addEventListener("DOMContentLoaded", function () {
+				function typeWriter() {
+					const text = "Ponte cómodo y ¡Disfruta!";
+					let i = 0;
+					let deleting = false;
+					let interval = setInterval(function () {
+						if (!deleting && i <= text.length) {
+							document.getElementById("typewriter-text").textContent =
+								text.substring(0, i++);
+						} else if (!deleting && i > text.length) {
+							deleting = true;
+						} else if (deleting && i >= 0) {
+							document.getElementById("typewriter-text").textContent =
+								text.substring(0, i--);
+						} else if (deleting && i < 0) {
+							deleting = false;
+						}
+					}, 150);
+				}
+
+				typeWriter();
+			});
 		</script>
 	</body>
 </html>

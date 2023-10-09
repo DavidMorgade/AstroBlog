@@ -162,3 +162,34 @@ hr {
 	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+
+/* Animations */
+@keyframes typing {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+.typewriter h3 {
+	overflow: hidden; /* Para que el texto no se muestre desde el principio */
+	border-right: 0.15em solid orange; /* Simula el cursor */
+	white-space: nowrap; /* Evita el salto de línea */
+	margin: 0; /* Asegura que no haya márgenes que afecten el efecto */
+	letter-spacing: 0.15em; /* Ajusta el espaciado entre letras */
+	animation:
+		typing 2.5s steps(40, end),
+		blink-caret 0.75s step-end infinite; /* Animación de escritura */
+}
+
+@keyframes blink-caret {
+	from,
+	to {
+		border-color: transparent;
+	}
+	50% {
+		border-color: #022c22;
+	}
+}
