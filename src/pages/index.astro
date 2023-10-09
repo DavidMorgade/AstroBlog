@@ -3,7 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import MainLanguagesImages from "../components/MainLanguagesImages.astro";
+import ImageBottomSection from "../components/ImageBottomSection.astro";
 ---
 
 <!doctype html>
@@ -16,9 +16,9 @@ import MainLanguagesImages from "../components/MainLanguagesImages.astro";
 	<body>
 		<Header />
 		<main
-			class="relative m-0 flex min-w-full flex-col items-center justify-between gap-y-10 p-10 md:gap-x-20 md:p-16 xl:flex-row xl:items-center"
+			class="relative m-0 flex min-w-full flex-col items-center justify-between gap-y-10 border-b-4 border-emerald-900 p-10 md:gap-x-20 md:p-16 xl:flex-row xl:items-center"
 		>
-			<section class="text-center xl:text-left">
+			<section class="text-center xl:w-2/4 xl:text-left">
 				<div
 					class="flex flex-col items-center gap-8 xl:items-start xl:gap-y-14"
 				>
@@ -45,15 +45,32 @@ import MainLanguagesImages from "../components/MainLanguagesImages.astro";
 					</h3>
 				</div>
 			</section>
-			<section class="absolute bottom-0 top-0 -m-2 w-full opacity-10">
+			<section class="absolute bottom-0 top-0 w-full opacity-10">
 				<img
 					src="./programmingGuy.gif"
 					alt="codingBgGi"
 					class="block h-full w-full"
 				/>
 			</section>
-			<MainLanguagesImages />
+			<section class="opacity-50 shadow-slate-700 xl:w-2/4">
+				<img src="./top-programing-languages.jpeg" alt="" />
+			</section>
 		</main>
+		<section
+			class="flex flex-col items-center gap-5 p-10 text-center md:flex-row md:justify-center md:gap-x-10"
+		>
+			<p class="sm:text-xl md:text-2xl lg:text-3xl">
+				Accede a mi Portfolio para ver más proyectos como este:
+			</p>
+			<a
+				href="https://www.developermorgade.es/"
+				class="w-10 transition hover:scale-125"
+				target="blank"
+				;
+			>
+				<ImageBottomSection /></a
+			>
+		</section>
 		<Footer />
 		<script>
 			if (window.netlifyIdentity) {
