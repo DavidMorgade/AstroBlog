@@ -1,21 +1,27 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+// images
+import github from "../images/github-icon.png";
+import linkedin from "../images/linkedin-icon.png";
+import twitter from "../images/twitter-icon.png";
+// Image
+import { Image } from "astro:assets";
 ---
 
 <div class=`justify-between gap-5 flex`>
 	<li class="transition hover:scale-125">
 		<HeaderLink>
-			<img class="w-7" src="github-icon.png" alt="Github Icon" />
+			<Image class="w-7" src={github} alt="Github Icon" />
 		</HeaderLink>
 	</li>
 	<li class="transition hover:scale-125">
 		<HeaderLink>
-			<img class="w-7" src="linkedin-icon.png" alt="linkedin icon" />
+			<Image class="w-7" src={linkedin} alt="linkedin icon" />
 		</HeaderLink>
 	</li>
 	<li class="transition hover:scale-125">
 		<HeaderLink>
-			<img class="w-7" src="twitter-icon.png" alt="twitter icon" />
+			<Image class="w-7" src={twitter} alt="twitter icon" />
 		</HeaderLink>
 	</li>
 </div>
