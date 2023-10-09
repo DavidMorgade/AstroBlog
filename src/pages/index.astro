@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import MainLanguagesImages from "../components/MainLanguagesImages.astro";
 ---
 
 <!doctype html>
@@ -15,7 +16,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 	<body>
 		<Header />
 		<main
-			class="m-0 flex min-w-full flex-col items-center justify-between gap-y-10 p-10 md:gap-x-20 md:p-16 xl:flex-row xl:items-center"
+			class="relative m-0 flex min-w-full flex-col items-center justify-between gap-y-10 p-10 md:gap-x-20 md:p-16 xl:flex-row xl:items-center"
 		>
 			<section class="text-center xl:text-left">
 				<div
@@ -44,9 +45,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 					</h3>
 				</div>
 			</section>
-			<section class="xl:w-6/12">
-				<img src="./codingBgGif.webp" alt="codingBgGi" class="block w-full" />
+			<section class="absolute bottom-0 top-0 -m-2 w-full opacity-10">
+				<img
+					src="./programmingGuy.gif"
+					alt="codingBgGi"
+					class="block h-full w-full"
+				/>
 			</section>
+			<MainLanguagesImages />
 		</main>
 		<Footer />
 		<script>
