@@ -15,29 +15,40 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 	<body>
 		<Header />
 		<main
-			class="flex flex-col md:flex-row text-center justify-between m-0 w-full"
+			class="m-0 flex min-w-full flex-col items-center justify-between gap-y-10 p-10 md:gap-x-20 md:p-16 xl:flex-row xl:items-center"
 		>
-			<section>
-				<div class="flex flex-col">
-					<h2 class="text-3xl text-center leading-loose">¡Hola! Soy David.</h2>
-					<p class="leading-relaxed">
+			<section class="text-center xl:text-left">
+				<div
+					class="flex flex-col items-center gap-8 xl:items-start xl:gap-y-14"
+				>
+					<h2 class="text-3xl md:text-4xl xl:text-left xl:text-6xl">
+						¡Hola! Soy David.
+					</h2>
+					<p class="text-xl md:text-2xl">
 						Tu informático de confianza, si, ese que llamas cuando el portatil
 						te va lento, o cuando tu secadora no funciona...
 					</p>
-					<p>
+					<p class="text-xl md:text-2xl">
 						Si estás aquí para ver como voy progresando en el mundo del
 						Desarrollo Full Stack, tal vez aprendas algo interesante sobre
 						programación
 					</p>
-					<h3>Ponte cómodo y ¡Disfruta!</h3>
+					<p class="text-xl md:text-2xl">
+						Si eres una empresa y te gusta lo que ves, tal vez os interese
+						contactar conmigo a traves de linkedin o rellenar el formulario de
+						contacto de mi portfolio, también puedes contactarme por correo a
+						davidmorgadegil@gmail.com
+					</p>
+					<h3 class="text-2xl md:text-3xl xl:text-3xl">
+						Ponte cómodo y ¡Disfruta!
+					</h3>
 				</div>
 			</section>
-			<section>
-				<img src="./codingBgGif.webp" alt="codingBgGi" />
+			<section class="xl:w-6/12">
+				<img src="./codingBgGif.webp" alt="codingBgGi" class="block w-full" />
 			</section>
 		</main>
 		<Footer />
-
 		<script>
 			if (window.netlifyIdentity) {
 				window.netlifyIdentity.on("init", (user) => {
