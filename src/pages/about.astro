@@ -8,6 +8,8 @@ import {
 	SITE_ABOUT_DESCRIPTION,
 	SITE_ABOUT,
 } from "../consts";
+import { Image } from "astro:assets";
+import porfolio from "../images/PortfolioPreview.png";
 ---
 
 <!doctype html>
@@ -20,7 +22,54 @@ import {
 	</head>
 	<body>
 		<Header />
-
+		<main
+			class="relative flex min-w-full flex-col items-center justify-between gap-y-10 border-b-4 border-emerald-900 p-10 md:gap-x-20 md:p-16 xl:flex-row xl:items-center"
+		>
+			<section class="z-10 text-center xl:w-2/4 xl:text-left">
+				<div
+					class="flex flex-col items-center gap-8 xl:items-start xl:gap-y-14"
+				>
+					<h2 class="text-2xl md:text-3xl xl:text-left xl:text-5xl">
+						¡Hola! Soy David.
+					</h2>
+					<p class="text-xl md:text-2xl">
+						Tu informático de confianza, si, ese que llamas cuando el portatil
+						te va lento, o cuando tu secadora no funciona...
+					</p>
+					<p class="text-xl md:text-2xl">
+						Si eres una empresa y te gusta lo que ves, tal vez os interese
+						contactar conmigo a traves de linkedin o rellenar el formulario de
+						contacto de mi <a href="https://www.developermorgade.es/"
+							>Portfolio</a
+						>, también puedes contactarme por correo a davidmorgadegil@gmail.com
+					</p>
+					<div class="typewriter">
+						<h3
+							id="typewriter-text"
+							class="h-12 text-2xl md:text-3xl xl:text-3xl"
+						>
+						</h3>
+					</div>
+				</div>
+			</section>
+			<section class="absolute bottom-0 top-0 w-full opacity-10">
+				<img
+					src="./programmingGuy.gif"
+					alt="codingBgGi"
+					class="block h-full w-full"
+				/>
+			</section>
+			<section
+				class="relative z-10 flex flex-col items-center justify-center opacity-90 xl:w-2/4"
+			>
+				<Image src={porfolio} alt={"Imagen porfolio z-1"} />
+				<a
+					class={"absolute w-full h-full text-center flex-col invisible hover:visible justify-center flex opacity-0 hover:opacity-1 z-10"}
+					href="https://www.developermorgade.es/"
+					target="_blank"><span> Accede a mi Porfolio</span></a
+				>
+			</section>
+		</main>
 		<Footer />
 	</body>
 </html>
