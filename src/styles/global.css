@@ -86,12 +86,13 @@ strong,
 b {
 	font-weight: 700;
 }
-a {
+/* a {
+	all: unset;
 	color: var(--gray-light);
 }
 a:hover {
 	color: var(--accent);
-}
+} */
 p {
 	margin-bottom: 1em;
 	color: var(--gray-light);
