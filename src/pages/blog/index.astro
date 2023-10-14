@@ -1,13 +1,13 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+const posts = (await getCollection("blog")).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
 );
 ---
 
@@ -89,23 +89,58 @@ const posts = (await getCollection('blog')).sort(
 		<Header />
 		<main>
 			<section>
+				<div
+					class="mb-5 flex flex-col items-center justify-center md:flex-row md:gap-5"
+				>
+					<label for="filter">Filtrar por:</label>
+					<select class="" name="filter" id="filter">
+						<option value="todos">Todos</option>
+						<option value="programación">Programación</option>
+						<option value="informatica">Informática</option>
+						<option value="offtopic">Off Topic</option>
+					</select>
+				</div>
 				<ul>
 					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
+						posts.map((post) => {
+							return (
+								<li>
+									<a href={`/blog/${post.slug}/`}>
+										<img
+											width={720}
+											height={360}
+											src={post.data.heroImage}
+											alt=""
+										/>
+										<h4 class="title">{post.data.title}</h4>
+										<p class="date">
+											<FormattedDate date={post.data.pubDate} />
+										</p>
+									</a>
+								</li>
+							);
+						})
 					}
 				</ul>
 			</section>
 		</main>
 		<Footer />
+		<script>
+			const filter = document
+				.getElementById("filter")
+				.addEventListener("change", (e) => {
+					const value = e.target.value;
+					const posts = document.querySelectorAll("ul li");
+					posts.forEach((post) => {
+						if (value === "todos") {
+							post.style.display = "block";
+						} else if (post.querySelector("p").innerText.includes(value)) {
+							post.style.display = "block";
+						} else {
+							post.style.display = "none";
+						}
+					});
+				});
+		</script>
 	</body>
 </html>

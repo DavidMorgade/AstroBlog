@@ -51,6 +51,9 @@ body {
 	font-size: 20px;
 	line-height: 1.7;
 }
+select {
+	background-color: rgb(21, 21, 21);
+}
 main {
 	width: 720px;
 	max-width: calc(100% - 2em);
