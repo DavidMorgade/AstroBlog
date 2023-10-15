@@ -15,102 +15,42 @@ const posts = (await getCollection("blog")).sort(
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
-			<section>
-				<div
-					class="mb-5 flex flex-col items-center justify-center md:flex-row md:gap-5"
-				>
+		<main class="w-full border-b-4 border-emerald-900">
+			<section class="w-full md:m-auto md:w-3/4">
+				<div class="mb-5 flex items-center justify-center gap-5">
 					<label for="filter">Filtrar por:</label>
-					<select class="" name="filter" id="filter">
+					<select class="mb-4 mt-4" name="filter" id="filter">
 						<option value="todos">Todos</option>
 						<option value="programacion">Programación</option>
 						<option value="informatica">Informática</option>
 						<option value="offtopic">Off Topic</option>
 					</select>
 				</div>
-				<ul>
+				<ul
+					class="grid grid-cols-1 content-center gap-8 md:grid-cols-3 md:grid-rows-3"
+				>
 					{
-						posts.map((post) => {
+						posts.map((post, index) => {
+							let classNames = "post";
+							if (index === 0) {
+								classNames +=
+									" md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-3 xl:row-end-5 xl:col-end-4";
+							}
 							return (
-								<li class="post" id={post.data.category}>
-									<a href={`/blog/${post.slug}/`}>
+								<li class={classNames + ""} id={post.data.category}>
+									<a
+										class="flex h-full flex-col items-center justify-center gap-3 xl:justify-start"
+										href={`/blog/${post.slug}/`}
+									>
 										<img
+											class="rounded-3xl"
 											width={720}
 											height={360}
 											src={post.data.heroImage}
-											alt=""
+											alt="s"
 										/>
 										<h4 class="title">{post.data.title}</h4>
 										<p class="date">
@@ -128,6 +68,9 @@ const posts = (await getCollection("blog")).sort(
 		<script>
 			const blogPosts = document.querySelectorAll(".post");
 			const select = document.getElementById("filter") as HTMLSelectElement;
+			window.onload = () => {
+				select.options[0].selected = true;
+			};
 			select.addEventListener("change", (e: Event) => {
 				const value = (e.target as HTMLSelectElement).value
 					.trim()
