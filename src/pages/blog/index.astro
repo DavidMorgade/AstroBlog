@@ -95,7 +95,7 @@ const posts = (await getCollection("blog")).sort(
 					<label for="filter">Filtrar por:</label>
 					<select class="" name="filter" id="filter">
 						<option value="todos">Todos</option>
-						<option value="programación">Programación</option>
+						<option value="programacion">Programación</option>
 						<option value="informatica">Informática</option>
 						<option value="offtopic">Off Topic</option>
 					</select>
@@ -104,7 +104,7 @@ const posts = (await getCollection("blog")).sort(
 					{
 						posts.map((post) => {
 							return (
-								<li>
+								<li class="post">
 									<a href={`/blog/${post.slug}/`}>
 										<img
 											width={720}
@@ -126,21 +126,17 @@ const posts = (await getCollection("blog")).sort(
 		</main>
 		<Footer />
 		<script>
-			const filter = document
-				.getElementById("filter")
-				.addEventListener("change", (e) => {
-					const value = e.target.value;
-					const posts = document.querySelectorAll("ul li");
-					posts.forEach((post) => {
-						if (value === "todos") {
-							post.style.display = "block";
-						} else if (post.querySelector("p").innerText.includes(value)) {
-							post.style.display = "block";
-						} else {
-							post.style.display = "none";
-						}
-					});
+			const blogPosts = document.querySelectorAll(".post");
+			const select = document.getElementById("filter") as HTMLSelectElement;
+			select.addEventListener("change", (e: Event) => {
+				const value = (e.target as HTMLSelectElement).value
+					.trim()
+					.toLowerCase();
+				if (value === "todos") return;
+				blogPosts.forEach((post) => {
+					console.log(post);
 				});
+			});
 		</script>
 	</body>
 </html>
