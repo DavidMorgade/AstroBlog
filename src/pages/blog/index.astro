@@ -104,7 +104,7 @@ const posts = (await getCollection("blog")).sort(
 					{
 						posts.map((post) => {
 							return (
-								<li class="post">
+								<li class="post" id={post.data.category}>
 									<a href={`/blog/${post.slug}/`}>
 										<img
 											width={720}
@@ -132,9 +132,15 @@ const posts = (await getCollection("blog")).sort(
 				const value = (e.target as HTMLSelectElement).value
 					.trim()
 					.toLowerCase();
-				if (value === "todos") return;
 				blogPosts.forEach((post) => {
-					console.log(post);
+					if (value === "todos") {
+						post.classList.remove("hidden");
+						return;
+					} else if (post.id === value) {
+						post.classList.remove("hidden");
+					} else {
+						post.classList.add("hidden");
+					}
 				});
 			});
 		</script>
