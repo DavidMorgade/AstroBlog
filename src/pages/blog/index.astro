@@ -5,6 +5,8 @@ import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
+import moreButton from "../../images/more-button.png";
+import { Image } from "astro:assets";
 
 const posts = (await getCollection("blog")).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
@@ -19,7 +21,7 @@ const posts = (await getCollection("blog")).sort(
 	<body>
 		<Header />
 		<main class="w-full border-b-4 border-emerald-900">
-			<section class="w-full md:m-auto md:w-3/4">
+			<section class="flex w-full flex-col items-center md:m-auto md:w-3/4">
 				<div class="mb-5 flex items-center justify-center gap-5">
 					<label for="filter">Filtrar por:</label>
 					<select class="mb-4 mt-4" name="filter" id="filter">
@@ -35,12 +37,14 @@ const posts = (await getCollection("blog")).sort(
 					{
 						posts.map((post, index) => {
 							let classNames = "post";
+							let greaterThanThree = false;
 							if (index === 0) {
 								classNames +=
 									" md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-3 xl:row-end-2 xl:col-end-3";
 							}
 							if (index >= 3) {
 								classNames += " hidden";
+								greaterThanThree = true;
 							}
 							return (
 								<li class={classNames + ""} id={post.data.category}>
@@ -65,6 +69,13 @@ const posts = (await getCollection("blog")).sort(
 						})
 					}
 				</ul>
+				{
+					posts.length > 3 && (
+						<button id="button__galery" class="mb-5 mt-5">
+							<Image class={"w-10"} src={moreButton} alt="More button" />
+						</button>
+					)
+				}
 			</section>
 		</main>
 		<Footer />
@@ -79,6 +90,12 @@ const posts = (await getCollection("blog")).sort(
 					.trim()
 					.toLowerCase();
 				blogPosts.forEach((post, index) => {
+					if (index <= 3) {
+						const button = document.querySelector("#button__galery");
+						button?.classList.add("hidden");
+					}
+					// TODO CONDITION SO THE BUTTON DOESNT RENDER
+
 					// THIS CODE IS A MESS, I KNOW BUT IT PREVENTS LOADING MORE IMAGES THAN NEEDED EVEN WHEN WE USE THE SELECT FILTER
 					if (value === "todos" && index < 3) {
 						post.classList.remove("hidden");
