@@ -30,14 +30,17 @@ const posts = (await getCollection("blog")).sort(
 					</select>
 				</div>
 				<ul
-					class="grid grid-cols-1 content-center gap-8 md:grid-cols-3 md:grid-rows-3"
+					class="grid grid-cols-1 content-center gap-8 md:grid-cols-2 md:grid-rows-2 xl:grid-cols-2"
 				>
 					{
 						posts.map((post, index) => {
 							let classNames = "post";
 							if (index === 0) {
 								classNames +=
-									" md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-3 xl:row-end-5 xl:col-end-4";
+									" md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-3 xl:row-end-2 xl:col-end-3";
+							}
+							if (index >= 3) {
+								classNames += " hidden";
 							}
 							return (
 								<li class={classNames + ""} id={post.data.category}>
@@ -75,13 +78,17 @@ const posts = (await getCollection("blog")).sort(
 				const value = (e.target as HTMLSelectElement).value
 					.trim()
 					.toLowerCase();
-				blogPosts.forEach((post) => {
-					if (value === "todos") {
+				blogPosts.forEach((post, index) => {
+					// THIS CODE IS A MESS, I KNOW BUT IT PREVENTS LOADING MORE IMAGES THAN NEEDED EVEN WHEN WE USE THE SELECT FILTER
+					if (value === "todos" && index < 3) {
 						post.classList.remove("hidden");
 						return;
 					} else if (post.id === value) {
 						post.classList.remove("hidden");
 					} else {
+						post.classList.add("hidden");
+					}
+					if (index >= 3) {
 						post.classList.add("hidden");
 					}
 				});
