@@ -10,6 +10,23 @@ import SocialMediaItems from "./SocialMediaItems.astro";
 	<h1 class="font text-4xl font-bold italic sm:text-5xl">
 		{SITE_TITLE}
 	</h1>
+	<rux-global-status-bar
+		include-icon="true"
+		app-domain="Astro"
+		app-name="Theme Switch"
+		app-version="v6.12.1"
+		menu-icon="apps"
+		username=""
+		app-state-color=""
+		app-state=""
+	>
+		<rux-clock></rux-clock>
+
+		<rux-switch slot="right-side" id="theme-switch">
+			<rux-icon id="theme-icon" slot="label" icon="brightness-3" size="small"
+			></rux-icon>
+		</rux-switch>
+	</rux-global-status-bar>
 	<nav>
 		<ul
 			class="flex w-96 flex-col-reverse items-center justify-center gap-y-5 md:flex-row md:justify-between md:gap-x-5"

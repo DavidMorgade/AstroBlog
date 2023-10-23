@@ -1,7 +1,7 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
 	title: string;
@@ -9,9 +9,9 @@ interface Props {
 	image?: string;
 }
 
-			const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
+const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -21,8 +21,20 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+<link
+	rel="preload"
+	href="/fonts/atkinson-regular.woff"
+	as="font"
+	type="font/woff"
+	crossorigin
+/>
+<link
+	rel="preload"
+	href="/fonts/atkinson-bold.woff"
+	as="font"
+	type="font/woff"
+	crossorigin
+/>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -45,3 +57,53 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<!-- script for themes -->
+<link
+	rel="stylesheet"
+	href="https://unpkg.com/@astrouxds/astro-web-components@6.12.1/dist/astro-web-components/astro-web-components.css"
+/>
+
+<script
+	type="module"
+	defer
+	src="https://unpkg.com/@astrouxds/astro-web-components@6.12.1/dist/astro-web-components/astro-web-components.esm.js"
+></script>
+<script>
+	const body = document.querySelector("body");
+	const themeSwitch = document.getElementById(
+		"theme-switch",
+	) as HTMLInputElement;
+	const themeIcon = document.getElementById("theme-icon");
+	const darkIcon = "brightness-3";
+	const darkTheme = "dark-theme";
+	const lightIcon = "wb-sunny";
+	const lightTheme = "light-theme";
+	const themeName = "astro-theme";
+	const themePreference = window.localStorage.getItem(themeName);
+
+	if (themePreference) {
+		const preference = JSON.parse(themePreference);
+		body?.classList.add(preference.class);
+		themeIcon?.setAttribute("icon", preference.icon);
+		themeSwitch?.setAttribute(
+			"checked",
+			preference.icon === lightIcon ? "true" : "false",
+		);
+	}
+
+	themeSwitch?.addEventListener("click", (e) => {
+		if (!themeSwitch.checked) {
+			const preference = { class: lightTheme, icon: lightIcon };
+			window.localStorage.setItem(themeName, JSON.stringify(preference));
+			body?.classList.remove(darkTheme);
+			body?.classList.add(lightTheme);
+			themeIcon?.setAttribute("icon", lightIcon);
+			return;
+		}
+		const preference = { class: darkTheme, icon: darkIcon };
+		window.localStorage.setItem(themeName, JSON.stringify(preference));
+		body?.classList.remove(lightTheme);
+		body?.classList.add(darkTheme);
+		themeIcon?.setAttribute("icon", darkIcon);
+	});
+</script>

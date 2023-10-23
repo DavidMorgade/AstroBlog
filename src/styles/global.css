@@ -18,6 +18,19 @@
 	--box-shadow: 0 2px 6px rgba(var(--gray), 25%),
 		0 8px 24px rgba(var(--gray), 33%), 0 16px 32px rgba(var(--gray), 33%);
 }
+body.light-theme main {
+	background-color: rgb(var(--white));
+	color: rgb(var(--black));
+}
+body.light-theme p,
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
+body.light-theme h5,
+body.light-theme h6 {
+	color: rgb(var(--black));
+}
 @font-face {
 	font-family: "Atkinson";
 	src: url("/fonts/atkinson-regular.woff") format("woff");

@@ -86,6 +86,7 @@ const posts = (await getCollection("blog")).sort(
 				select.options[0].selected = true;
 			};
 			select.addEventListener("change", (e: Event) => {
+				let counter = 0;
 				const value = (e.target as HTMLSelectElement).value
 					.trim()
 					.toLowerCase();
@@ -94,8 +95,6 @@ const posts = (await getCollection("blog")).sort(
 						const button = document.querySelector("#button__galery");
 						button?.classList.add("hidden");
 					}
-					// TODO CONDITION SO THE BUTTON DOESNT RENDER
-
 					// THIS CODE IS A MESS, I KNOW BUT IT PREVENTS LOADING MORE IMAGES THAN NEEDED EVEN WHEN WE USE THE SELECT FILTER
 					if (value === "todos" && index < 3) {
 						post.classList.remove("hidden");
